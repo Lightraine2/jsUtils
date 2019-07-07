@@ -1,0 +1,97 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <title>My Contacts</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <h1 class="align-center">
+            My Contacts!
+        </h1>
+        <input type="text" id="filterInput" placeholder="Search Names...">
+        <ul id="names" class="collection with-header">
+            <li class="collection-header">
+                <h5>A</h5>
+            </li>
+            <li class="collection-item">
+                <a href="#">Abe</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Adrian</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Abbie</a>
+            </li>
+            <li class="collection-header">
+                <h5>B</h5>
+            </li>
+            <li class="collection-item">
+                <a href="#">Bert</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Brenda</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Barry</a>
+            </li>
+            <li class="collection-header">
+                <h5>C</h5>
+            </li>
+            <li class="collection-item">
+                <a href="#">Cameron</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Curt</a>
+            </li>
+            <li class="collection-item">
+                <a href="#">Claytus</a>
+            </li>
+        </ul>
+    </div>
+
+    <script>
+
+        //get input element
+        let filterInput = document.getElementById('filterInput');
+        //add event listener
+        filterInput.addEventListener('keyup', filterNames);
+        function filterNames() {
+            // get value of input
+            let filterValue = document.getElementById('filterInput').value.toUpperCase();
+            console.log(filterValue);
+
+            // get names
+
+            let ul = document.getElementById('names');
+            // Get items - queryselectorAll will get all the elements of a type. i.e all the list items called collection item and puts into array
+            let li = ul.querySelectorAll('li.collection-item');
+
+            // Loop through the items
+
+            for (let i = 0; i < li.length; i++) {
+                let a = li[i].getElementsByTagName('a')[0];
+                // if matched
+                if (a.innerHTML.toUpperCase().indexOf(filterValue) > -1) {
+                    li[i].style.display = '';
+                } else {
+                    li[i].style.display = 'none';
+
+                }
+            }
+        }
+
+
+    </script>
+
+    <!-- <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script> -->
+
+</body>
+
+</html>
